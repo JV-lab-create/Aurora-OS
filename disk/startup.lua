@@ -16,7 +16,7 @@ end
 
 -- Installer Configs
 local formatOnly = false
-local installerProductName = "Aurora OS"
+local ProductName = "Aurora OS"
 local version = "1.0.0 ALPHA"
 local installerver = "v0.1 ALPHA INSTALLER"
 local OnlineOnly = true
@@ -30,6 +30,7 @@ isFormatDriveChecked = "false"
 Installed = false
 format = false
 
+shell.run("set", "os.productname", ProductName)
 
 -- Varables
 local tx,ty = term.getSize() -- Terminal size (for centering text)
@@ -142,15 +143,15 @@ end
 openSubFrame(1)
 
 
-sub[1]:addLabel():setText("Welcome to "..installerProductName.."!"):setPosition(2, 2)
-sub[1]:addLabel():setText(installerProductName.." was created with a passion to make a"):setPosition(2, 4)
-sub[1]:addLabel():setText("a GUI in Computer Craft. "..installerProductName.." uses Basalt"):setPosition(2, 5)
+sub[1]:addLabel():setText("Welcome to "..ProductName.."!"):setPosition(2, 2)
+sub[1]:addLabel():setText(ProductName.." was created with a passion to make a"):setPosition(2, 4)
+sub[1]:addLabel():setText("a GUI in Computer Craft. "..ProductName.." uses Basalt"):setPosition(2, 5)
 sub[1]:addLabel():setText("to make beautiful and advanced interfaces."):setPosition(2, 6)
 sub[2]:addLabel():setText("Instalation Options"):setPosition(2, 2)
 sub[2]:addLabel():setText("Release Chanel"):setPosition(2, 4)
 sub[2]:addLabel():setText("Version"):setPosition(2, 6)
 sub[2]:addLabel():setText("Format Disk?"):setPosition(2, 8)
-sub[4]:addLabel():setText(installerProductName.." Has Installed!"):setPosition(2, 2)
+sub[4]:addLabel():setText(ProductName.." Has Installed!"):setPosition(2, 2)
 local installchanel = sub[2]:addDropdown():setPosition(tx-15, 4)
 --installchanel:addItem("Release", colors.green, colors.white)
 --installchanel:addItem("Beta", colors.lightGray)
@@ -215,7 +216,7 @@ local function getFilename(sUrl)
 end
 
 function Install()
-    if isFormatDriveChecked then
+    if isFormatDriveChecked == "true" then
         shell.run("rm /*")
     end
     local wtx, wty = term.getSize()
@@ -247,20 +248,22 @@ function Install()
     --shell.run("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua" ,isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
 
 
-local CheckFiles()
+local function CheckFiles()
+    return true -- WIP
+end
 
 
 
 
 
 InstallerProgram:onDone(function()
-    if Installed then
+    if CheckFiles() then
         frame = 4
         nextBtn:show()
         nextBtn:setText("Restart PC"):setSize(12,1):setPosition(tx-12, ty-1)
         openSubFrame(4)
     else
-        onProgramError(" ", "All files have not installed! Please restart your computer!")
+        onProgramError(" ", "The System was unnable to Install correcty")
     end
 end)
 
