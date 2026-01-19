@@ -1,0 +1,10 @@
+local basalt = require("/lib/basalt")
+local tx,ty = term.getSize()
+local main = basalt.createFrame()
+main:setBackground(colors.white)
+local sideBar = main:addList()
+sideBar:setSize(15,ty)
+sideBar:addItem("Setting One")
+sideBar:addItem("Setting Two")
+
+basalt.autoUpdate()
