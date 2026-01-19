@@ -1,0 +1,49 @@
+{
+  "Desktop": {
+    "Alpha": [
+      "/system64/cpl/speakers.lua",
+      "/system64/cpl/terminal",
+      "/system64/cpl/system.lua",
+      "/system64/cpl/printers.lua",
+      "/system64/cpl/paint.lua",
+      "/system64/cpl/modem.lua",
+      "/system64/cpl/filemaniger.lua",
+      "/system64/cpl/edit.lua",
+      "/system64/cpl/diskdrive.lua",
+      "/system64/cpl/customization.lua",
+      "/system64/cpl/about.lua",
+      "/system64/cpl/",
+      "/system64/shell.lua",
+      "/system64/game_list.lua",
+      "/system64/desktop.lua",
+      "/system64/control.lua",
+      "/system64/app_launch.lua",
+      "/system64/all_program_list.lua",
+      "/system64/OS_Boot.lua",
+      "/lib/",
+      "/lib/BSOD.lua",
+      "/lib/basalt.lua",
+      "/program_files/",
+      "/program_files/minex/",
+      "/program_files/minex/minexp.lua",
+      "/system64/"
+    ],
+    "Beta": [
+
+    ],
+    "Release": [
+
+    ]
+  },
+  "Terminal": {
+    "Alpha": [
+
+    ],
+    "Beta": [
+
+    ],
+    "Release": [
+
+    ]
+  }
+}
