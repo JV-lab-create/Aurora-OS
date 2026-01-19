@@ -1,5 +1,0 @@
-{
-  [ "shell.allow_disk_startup" ] = false,
-  [ "edit.default_extension" ] = "txt",
-  [ "shell.autocomplete" ] = true,
-}

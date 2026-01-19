@@ -8,13 +8,18 @@
 
 -- OS ONLY Works on advanced computers
 
+-- Checking if Advanced Computer
+if not(term.isColor()) then
+    printError("You must have a Advanced Computer to install Aurora OS")
+    return
+end
+
 -- Installer Configs
 local format = false
 local formatOnly = false
 local version = "1.0.0 ALPHA"
 local installerver = "v0.1 ALPHA INSTALLER"
 local OnlineOnly = true
--- Product Key can be used to have like a OS in a store that has a Key!
 local BasaltOnDisk = false -- If basalt is not on the Disk.
 --It will require sperate disk or it will just download it from web if its able to
 VersionToInstall = "Desktop"
@@ -24,11 +29,6 @@ isFormatDriveChecked = "false"
 -- Varables
 local tx,ty = term.getSize() -- Terminal size (for centering text)
 
--- Checking if Advanced Computer
-if not(term.isColor()) then
-    printError("You must have a Advanced Computer to install Aurora OS")
-    return
-end
 
 
 if not http then
@@ -61,6 +61,7 @@ local basalt = require("/disk/basalt")
 --    printError("Not enough space!")
 --    return
 --end
+-- OLD CODE
 term.clear()
 term.setCursorPos((tx/2)-15,ty-6)
 term.write("Setup is loading tempolary files")
@@ -142,9 +143,9 @@ local installchanel = sub[2]:addDropdown():setPosition(tx-15, 4)
 --installchanel:addItem("Beta", colors.lightGray)
 installchanel:addItem("Alpha", colors.lightGray)
 --installchanel:addItem("Dev", colors.lightGray)
-installchanel:addItem("from Disk", colors.lightGray)
 local versiondrop = sub[2]:addDropdown():setPosition(tx-15, 6)
 versiondrop:addItem("Desktop", colors.lightGray)
+--versiondrop:addItem("Minimal", colors.lightGray)
 --versiondrop:addItem("Terminal", colors.lightGray)
 --versiondrop:addItem("Standerd", colors.lightGray)
 --versiondrop:addItem("Advanced Server", colors.lightGray)
