@@ -178,7 +178,7 @@ nextBtn:onClick(function(self,event,button,x,y)
         else
             isFormatDriveChecked = "false"
         end
-        InstallerProgram:execute("/disk/installer.script.lua",isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
+        InstallerProgram:execute("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua ",isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
     elseif frame == 4 then
         os.reboot()
     end
