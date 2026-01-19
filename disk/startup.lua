@@ -178,7 +178,7 @@ nextBtn:onClick(function(self,event,button,x,y)
         else
             isFormatDriveChecked = "false"
         end
-        InstallerProgram:execute("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua ",isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
+        InstallerProgram:execute(Install)
     elseif frame == 4 then
         os.reboot()
     end
@@ -188,6 +188,10 @@ end)
 InstallerProgram:onError(function(self, event, err)
     onProgramError(self, err)
 end)
+
+function Install()
+    shell.run("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua" ,isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
+end
 
 InstallerProgram:onDone(function()
     frame = 4
