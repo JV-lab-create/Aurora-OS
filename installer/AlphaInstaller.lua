@@ -1,0 +1,37 @@
+--local arg = {...}
+isFormatDriveChecked = arg[1]
+BuildChaneltoInstall = arg[2]
+VersionToInstall = arg[3]
+version = arg[4]
+
+print("Installing Aurora OS 1.0.0 ALPHA")
+shell.run("mkdir /lib/")
+shell.run("mkdir /system64/")
+shell.run("mkdir /system64/cpl/")
+shell.run("mkdir /program_files/")
+print("Please Wait...")
+sleep(1)
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/lib/BSOD.lua /lib/BSOD.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/OS_Boot.lua /system64/OS_Boot.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/all_program_list.lua /system64/all_program_list.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/app_launch.lua /system64/app_launch.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/control.lua /system64/control.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/game_list.lua /system64/game_list.lua")
+print("Chilling Down for a moment")
+sleep(1)
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/about.lua /system64/cpl/about.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/biosrecpvery.lua /system64/cpl/biosrecpvery.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/customization.lua /system64/cpl/customization.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/diskdrive.lua /system64/cpl/diskdrive.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/edit.lua /system64/cpl/edit.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/filemaniger.lua /system64/cpl/filemaniger.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/modem.lua /system64/cpl/modem.lua")
+print("Chilling Down for a moment")
+sleep(1)
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/paint.lua /system64/cpl/paint.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/printers.lua /system64/cpl/printers.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/speakers.lua /system64/cpl/speakers.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/speakers.lua /system64/cpl/speakers.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/system.lua /system64/cpl/system.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/system64/cpl/terminal.lua /system64/cpl/terminal.lua")
+shell.run("wget get https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/program_files/minex/minexp.lua /program_files/minex/minexp.lua")
