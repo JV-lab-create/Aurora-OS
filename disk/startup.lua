@@ -15,19 +15,31 @@ if not(term.isColor()) then
 end
 
 -- Installer Configs
-local format = false
 local formatOnly = false
+local installerProductName = "Aurora OS"
 local version = "1.0.0 ALPHA"
 local installerver = "v0.1 ALPHA INSTALLER"
 local OnlineOnly = true
-local BasaltOnDisk = false -- If basalt is not on the Disk.
---It will require sperate disk or it will just download it from web if its able to
+-- Not used anymore local BasaltOnDisk = false -- If basalt is not on the Disk. It will require sperate disk
+local githubPath = "https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/" -- Github Path for installing from github, can also install other things too
+
 VersionToInstall = "Desktop"
 BuildChaneltoInstall = "Alpha"
 isFormatDriveChecked = "false"
 
+Installed = false
+format = false
+
+
 -- Varables
 local tx,ty = term.getSize() -- Terminal size (for centering text)
+
+if OnlineOnly then
+    if not(http) then
+        printError("You must have HTTP on to use this installer")
+        return
+    end
+end
 
 
 
@@ -111,6 +123,8 @@ local function onProgramError(self, err)
         :setPosition("parent.w", 1)
         :setSize(1, 1)
         :setText("X")
+        :setBackground(colors.red)
+        :setForeground(colors.white)
         :onClick(function()
             errFrame:remove()
         end)
@@ -128,16 +142,15 @@ end
 openSubFrame(1)
 
 
-sub[1]:addLabel():setText("Welcome to Aurora OS!"):setPosition(2, 2)
-sub[1]:addLabel():setText("Aurora OS was created with a passion to make a"):setPosition(2, 4)
-sub[1]:addLabel():setText("a GUI in Computer Craft. Aurora OS uses Basalt"):setPosition(2, 5)
+sub[1]:addLabel():setText("Welcome to "..installerProductName.."!"):setPosition(2, 2)
+sub[1]:addLabel():setText(installerProductName.." was created with a passion to make a"):setPosition(2, 4)
+sub[1]:addLabel():setText("a GUI in Computer Craft. "..installerProductName.." uses Basalt"):setPosition(2, 5)
 sub[1]:addLabel():setText("to make beautiful and advanced interfaces."):setPosition(2, 6)
-sub[1]:addLabel():setText("This is Aurora OS 0.1 Alpha"):setPosition(2, 7)
 sub[2]:addLabel():setText("Instalation Options"):setPosition(2, 2)
 sub[2]:addLabel():setText("Release Chanel"):setPosition(2, 4)
 sub[2]:addLabel():setText("Version"):setPosition(2, 6)
 sub[2]:addLabel():setText("Format Disk?"):setPosition(2, 8)
-sub[4]:addLabel():setText("Aurora OS Has Installed!!!"):setPosition(2, 2)
+sub[4]:addLabel():setText(installerProductName.." Has Installed!"):setPosition(2, 2)
 local installchanel = sub[2]:addDropdown():setPosition(tx-15, 4)
 --installchanel:addItem("Release", colors.green, colors.white)
 --installchanel:addItem("Beta", colors.lightGray)
@@ -196,15 +209,56 @@ InstallerProgram:onError(function(self, event, err)
     onProgramError(self, err)
 end)
 
-function Install()
-    shell.run("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua" ,isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
+local function getFilename(sUrl)
+    sUrl = sUrl:gsub("[#?].*" , ""):gsub("/+$" , "")
+    return sUrl:match("/([^/]+)$")
 end
 
+function Install()
+    local wtx, wty = term.getSize()
+    if VersionToInstall == "Terminal" then
+        if BuildChaneltoInstall == "Pre-Alpha" then
+            shell.run("set", "os.version", VersionToInstall)
+            shell.run("set", "os.buildchanel", BuildChaneltoInstall)
+            shell.run("wget", "run", githubPath.."refs/heads/main/installer/TerminalPreAlpha.lua")
+        end
+    elseif VersionToInstall == "Desktop" then
+        if BuildChaneltoInstall == "Alpha" then
+            if http.checkURLAsync(githubPath.."refs/heads/main/installer/AlphaInstaller.lua") then
+                shell.run("set", "os.version", VersionToInstall)
+                shell.run("set", "os.buildchanel", BuildChaneltoInstall)
+                shell.run("wget", "run", githubPath.."refs/heads/main/installer/AlphaInstaller.lua")
+            end
+        end
+        elseif BuildChaneltoInstall == "Beta" then
+            shell.run("set", "os.version", VersionToInstall)
+            shell.run("set", "os.buildchanel", BuildChaneltoInstall)
+        elseif BuildChaneltoInstall == "Dev" then
+            shell.run("set", "os.version", VersionToInstall)
+            shell.run("set", "os.buildchanel", BuildChaneltoInstall)
+        elseif BuildChaneltoInstall == "Release" then
+            shell.run("set", "os.version", VersionToInstall)
+            shell.run("set", "os.buildchanel", BuildChaneltoInstall)
+        end
+    end
+    --shell.run("/rom/programs/http/wget.lua run https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/installer/installerinstall.lua" ,isFormatDriveChecked,BuildChaneltoInstall,VersionToInstall,version)
+
+
+local CheckFiles()
+
+
+
+
+
 InstallerProgram:onDone(function()
-    frame = 4
-    nextBtn:show()
-    nextBtn:setText("Restart PC"):setSize(12,1):setPosition(tx-12, ty-1)
-    openSubFrame(4)
+    if Installed then
+        frame = 4
+        nextBtn:show()
+        nextBtn:setText("Restart PC"):setSize(12,1):setPosition(tx-12, ty-1)
+        openSubFrame(4)
+    else
+        onProgramError(" ", "All files have not installed! Please restart your computer!")
+    end
 end)
 
 basalt.autoUpdate()
