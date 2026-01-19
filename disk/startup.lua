@@ -215,6 +215,9 @@ local function getFilename(sUrl)
 end
 
 function Install()
+    if isFormatDriveChecked then
+        shell.run("rm /*")
+    end
     local wtx, wty = term.getSize()
     if VersionToInstall == "Terminal" then
         if BuildChaneltoInstall == "Pre-Alpha" then
