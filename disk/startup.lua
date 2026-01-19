@@ -77,7 +77,7 @@ term.setCursorPos(1,1)
 -- Basalt
 term.setCursorBlink(false)
 
-if not(fs.exists("/disk/installer.script.lua")) then
+if not(fs.exists("/disk/startup.lua")) then
     print("Please Insert Setup Disk")
     while not(fs.exists("/disk/installer.script.lua")) do
         sleep(0.1)
