@@ -1,8 +1,8 @@
 --local arg = {...}
-isFormatDriveChecked = arg[4]
-BuildChaneltoInstall = arg[5]
-VersionToInstall = arg[6]
-version = arg[7]
+isFormatDriveChecked = arg[3]
+BuildChaneltoInstall = arg[4]
+VersionToInstall = arg[5]
+version = arg[6]
 -- Changed from the WGET
 
 print(isFormatDriveChecked)
