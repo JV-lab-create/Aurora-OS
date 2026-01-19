@@ -10,6 +10,8 @@ shell.run("mkdir /system64/")
 shell.run("mkdir /system64/cpl/")
 shell.run("mkdir /program_files/")
 print("Please Wait...")
+shell.run("wget https://dkolf.de/dkjson-lua/dkjson-2.8.lua /lib/dksjon.lua")
+-- Installs DKJSON for converting json to lua array
 sleep(1)
 shell.run("wget https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/startup.lua /startup.lua")
 sleep(0.3)
