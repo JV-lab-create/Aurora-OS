@@ -12,7 +12,7 @@ shell.run("mkdir /system64/cpl/")
 shell.run("mkdir /program_files/")
 shell.run("wget https://dkolf.de/dkjson-lua/dkjson-2.8.lua /lib/dksjon.lua")
 -- Installs DKJSON for converting json to lua array
-shell.run("set", "version", version)
+shell.run("set", "os.version", version)
 print("Please Wait...")
 sleep(1)
 shell.run("wget https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/startup.lua /startup.lua")
