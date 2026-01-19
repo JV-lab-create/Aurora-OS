@@ -1,4 +1,5 @@
 --local arg = {...}
+local version = "0.0.0.47914"
 isFormatDriveChecked = arg[1]
 BuildChaneltoInstall = arg[2]
 VersionToInstall = arg[3]
@@ -9,9 +10,10 @@ shell.run("mkdir /lib/")
 shell.run("mkdir /system64/")
 shell.run("mkdir /system64/cpl/")
 shell.run("mkdir /program_files/")
-print("Please Wait...")
 shell.run("wget https://dkolf.de/dkjson-lua/dkjson-2.8.lua /lib/dksjon.lua")
 -- Installs DKJSON for converting json to lua array
+shell.run("set", "version", version)
+print("Please Wait...")
 sleep(1)
 shell.run("wget https://raw.githubusercontent.com/JV-lab-create/Aurora-OS/refs/heads/main/startup.lua /startup.lua")
 sleep(0.3)
