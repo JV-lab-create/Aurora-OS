@@ -146,7 +146,7 @@ installchanel:addItem("Alpha", colors.lightGray)
 local versiondrop = sub[2]:addDropdown():setPosition(tx-15, 6)
 versiondrop:addItem("Desktop", colors.lightGray)
 --versiondrop:addItem("Minimal", colors.lightGray)
---versiondrop:addItem("Terminal", colors.lightGray)
+versiondrop:addItem("Terminal", colors.lightGray)
 --versiondrop:addItem("Standerd", colors.lightGray)
 --versiondrop:addItem("Advanced Server", colors.lightGray)
 --versiondrop:addItem("Terminal Server", colors.lightGray)
@@ -161,6 +161,13 @@ end)
 
 versiondrop:onChange(function(self, event, item)
     VersionToInstall = item.text
+    if VersionToInstall == "Terminal" then
+        installchanel:clear()
+        installchanel:addItem("Pre-Alpha", colors.lightGray)
+    elseif VersionToInstall == "Desktop" then
+        installchanel:clear()
+        installchanel:addItem("Alpha", colors.lightGray)
+    end
 end)
 
 
